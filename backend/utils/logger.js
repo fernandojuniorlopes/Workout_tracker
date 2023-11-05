@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const logger = {
   info: (message) => {
-    fs.appendFile('info.log', `${message}\n`, (err) => {
+    fs.appendFile('./utils/info.log', `${message}\n`, (err) => {
       if (err) {
         console.error('Error writing to log file:', err);
       }
@@ -10,7 +10,7 @@ const logger = {
   },
 
   error: (message) => {
-    fs.appendFile('error.log', `${message}\n`, (err) => {
+    fs.appendFile('./utils/error.log', `${message}\n`, (err) => {
       if (err) {
         console.error('Error writing to log file:', err);
       }

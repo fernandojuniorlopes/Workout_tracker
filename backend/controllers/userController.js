@@ -11,14 +11,14 @@ const userController = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        logger.error('Invalid email or password');
+        logger.error('Invalid email or password for user: '+ user.username);
         return res.status(401).json({ message: 'Invalid email or password' });
       }
 
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (!passwordMatch) {
-        logger.error('Invalid email or password');
+        logger.error('Invalid email or password for user: '+ user.username);
         return res.status(401).json({ message: 'Invalid email or password' });
       }
 
@@ -26,7 +26,7 @@ const userController = {
 
       res.json({ message: 'Login successful' });
     } catch (err) {
-      logger.error('Login failed: ' + err);
+      logger.error('Login failed: ' + err );
       res.status(500).json({ message: 'Login failed' });
     }
   },
