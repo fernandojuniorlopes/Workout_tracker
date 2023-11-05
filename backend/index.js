@@ -1,19 +1,32 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/userRoutes');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://localhost:27017/workout_db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Allow all origins - you might want to configure this to a specific origin in a production environment
+app.use(cors());
 
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-// Define a route for the root URL
 app.get('/', (req, res) => {
-  res.send('Welcome to the Workout Tracking App'); // This is a simple response to display on the root URL
+  res.send('Hello from the server!');
+});
+// Connecting to the database
+mongoose.connect('mongodb://127.0.0.1:27017/workout_db', { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connecting to MongoDB', error);
+});
+
+app.use(express.json());
+
+// Routes
+app.use('/', userRoutes); // Example URL: /user/register
+
+// ... (other routes and configurations)
+
+app.listen(5000, () => {
+    console.log('Server is running on port 5000');
 });
