@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +12,7 @@ const LoginForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, email, password })
+        body: JSON.stringify({ email, password })
       });
 
       const data = await response.json();
