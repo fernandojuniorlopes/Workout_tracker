@@ -25,10 +25,10 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleRegistration}>
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Register</button>
+      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc' }} placeholder="Username" />
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc' }} placeholder="Email" />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc' }} placeholder="Password" />
+      <button type="submit" style={{ padding: '10px', border: '1px solid #ccc' }}>Register</button>
     </form>
   );
 };

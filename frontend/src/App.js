@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
 import Home from './components/Homepage'
-
-
+import NavigationBar from './components/NavigationBar';
+import LoggedInNavbar from './components/LoggedInNavbar';
 const Homepage = () => {
   return (
     <div>
@@ -30,6 +30,7 @@ const App = () => {
 
   return (
     <Router>
+            {isAuthenticated() ? <LoggedInNavbar /> : <NavigationBar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<RegistrationForm />} />

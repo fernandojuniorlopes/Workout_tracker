@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import './styles/main.css';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome!</h1>
-      <div>
+    <div className="home-page">
+      <div className="home-div_center">
+        <h1>Welcome to the workout tracker app!</h1>
+      </div>
+      <div className="home-div_center">
         <Link to="/register">
           <button>Register</button>
         </Link>
