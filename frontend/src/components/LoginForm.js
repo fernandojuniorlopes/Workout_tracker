@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './styles/main.css';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +32,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className='login-form'>
       <input
         type="email"
         value={email}

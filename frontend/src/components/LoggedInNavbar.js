@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './styles/main.css';
 
 const LoggedInNavbar = () => {
-    const handleLogout = () => {
+  const handleLogout = () => {
         // Clear the login status or token from state or storage
         localStorage.removeItem('loggedIn'); // Assuming login status is stored in localStorage
     
@@ -18,7 +18,7 @@ const LoggedInNavbar = () => {
         </ul>
         <ul className="right-links"> 
           <li className="right-links li"><b onClick={handleLogout}>Logout</b></li>
-          <li className="right-links li"><b>Welcome back</b></li>
+          <li className="right-links li"><b>Welcome </b></li>
           {/* Add more navigation links */}
         </ul>
       </nav>

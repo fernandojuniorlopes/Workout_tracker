@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './styles/main.css';
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
@@ -24,7 +25,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleRegistration}>
+    <form onSubmit={handleRegistration} className='login-form'>
       <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc' }} placeholder="Username" />
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc' }} placeholder="Email" />
       <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc' }} placeholder="Password" />
