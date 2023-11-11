@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './styles/main.css';
 
 const LoginForm = () => {
@@ -16,11 +16,12 @@ const LoginForm = () => {
         },
         body: JSON.stringify({ email, password })
       });
-
+      const data = await response.json();
       if (response.ok) {
         // Log in is successful; set loggedIn in localStorage
         localStorage.setItem('loggedIn', 'true');
-        console.log('Logged in successfully');
+        localStorage.setItem('response', data.userId);
+        console.log(data.userId);
         // Redirect to the workout calendar or another page upon successful login
         window.location.href = '/workout-calendar'; // Redirect to '/workout-calendar'
       } else {

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
+const workoutRoutes = require('./routes/workoutRoutes');
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(express.json());
 
 // Routes
 app.use('/', userRoutes); // Example URL: /user/register
-
+app.use('/workouts', workoutRoutes); // Example URL: /user/register
 // ... (other routes and configurations)
 
 app.listen(5000, () => {

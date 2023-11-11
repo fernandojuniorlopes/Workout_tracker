@@ -73,3 +73,7 @@
   .right-links a{
     text-decoration: none;
   }
+
+.workout-item {
+  padding-left: 20px;
+}

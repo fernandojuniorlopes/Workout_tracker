@@ -24,7 +24,7 @@ const userController = {
 
       logger.info('Login successful for user: ' + user.username);
 
-      res.json({ message: 'Login successful' });
+      res.json({userId: user._id });
     } catch (err) {
       logger.error('Login failed: ' + err );
       res.status(500).json({ message: 'Login failed' });
