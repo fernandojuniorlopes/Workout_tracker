@@ -85,6 +85,13 @@
   box-sizing: border-box;
   color: white;
 }
+
+.event-content button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /*Legend Styles*/
 .legend {
   list-style-type: none;
