@@ -77,3 +77,31 @@
 .workout-item {
   padding-left: 20px;
 }
+/*Event content Styles*/
+.event-content {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+}
+/*Legend Styles*/
+.legend {
+  list-style-type: none;
+  padding: 0;
+}
+
+.legend-item {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  align-items: center;
+  flex-direction: row;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid black;
+}

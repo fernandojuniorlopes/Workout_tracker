@@ -8,6 +8,11 @@ const AddWorkoutForm = () => {
   const [sets, setSets] = useState(0);
   const [reps, setReps] = useState(0);
   const [userWorkouts, setUserWorkouts] = useState([]);
+  const [bodyPart, setbodyPart] = useState('');
+  
+  const handleBodyPartChange = (event) => {
+    setbodyPart(event.target.value);
+  };
 
   useEffect(() => {
     // Fetch user workouts when the component mounts
@@ -31,7 +36,7 @@ const AddWorkoutForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const workoutData = { userId, date, name, sets, reps };
+    const workoutData = { userId, date, name, sets, reps, bodyPart };
 
     try {
       const response = await fetch('http://localhost:5000/workouts/api/addWorkout', {
@@ -51,6 +56,7 @@ const AddWorkoutForm = () => {
         setDate('');
         setSets(0);
         setReps(0);
+        setbodyPart('');
       } else {
         console.error('Error creating workout');
       }
@@ -65,20 +71,20 @@ const AddWorkoutForm = () => {
         console.error('Invalid workoutId for deletion');
         return;
       }
-  
+
       // Indicate that the deletion is in progress
       // You can use a loading state to handle UI feedback
       // setLoading(true);
-  
+
       const response = await fetch(`http://localhost:5000/workouts/api/deleteWorkout/${workoutId}`, {
         method: 'DELETE',
       });
-  
+
       // Remove the deleted workout from the state
       setUserWorkouts((prevWorkouts) =>
         prevWorkouts.filter((workout) => workout._id !== workoutId)
       );
-  
+
       if (response.ok) {
         console.log('Workout deleted successfully');
         // Refresh the workouts on the frontend after deletion
@@ -95,53 +101,62 @@ const AddWorkoutForm = () => {
   };
   return (
     <div>
-    <form onSubmit={handleFormSubmit}>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Workout name"
-        />
-      </div>
-      <div>
-        <label>Date:</label>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          placeholder="date"
-        />
-      </div>
-      <div>
-        <label>Sets:</label>
-        <input
-          type="number"
-          value={sets}
-          onChange={(e) => setSets(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Reps:</label>
-        <input
-          type="number"
-          value={reps}
-          onChange={(e) => setReps(e.target.value)}
-        />
-      </div>
-      <button type="submit">Add Workout</button>
-    </form>
-      <div className='workout-item'>
-      {userWorkouts.map((workout, index) => (
-      <div key={workout._id || index}>
-          {/* Display workout information */}
-          <p>Name:{workout.name}&nbsp;Date:{workout.date}&nbsp;Set:{workout.sets}&nbsp;Rep:{workout.reps}</p>
-          {/* Add a Delete button */}
-          <button onClick={() => handleDeleteWorkout(workout._id)}>Delete</button>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Workout name"
+          />
         </div>
-      ))}
+        <div>
+          <label>Date:</label>
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            placeholder="date"
+          />
+        </div>
+        <div>
+          <label>Sets:</label>
+          <input
+            type="number"
+            value={sets}
+            onChange={(e) => setSets(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Reps:</label>
+          <input
+            type="number"
+            value={reps}
+            onChange={(e) => setReps(e.target.value)}
+          />
+        </div>
+        <div>
+      <label htmlFor="bodyPart">Select Body Part:</label>
+      <select id="bodyPart" value={bodyPart} onChange={handleBodyPartChange}>
+        <option value="">Select...</option>
+        <option value="chest">Chest</option>
+        <option value="shoulders">Shoulders</option>
+        <option value="legs">Legs</option>
+      </select>
     </div>
+        <button type="submit">Add Workout</button>
+      </form>
+      <div className='workout-item'>
+        {userWorkouts.map((workout, index) => (
+          <div key={workout._id || index}>
+            {/* Display workout information */}
+            <p>Name:{workout.name}&nbsp;Date:{workout.date}&nbsp;Set:{workout.sets}&nbsp;Rep:{workout.reps}Bodypart:{workout.bodyPart}</p>
+            {/* Add a Delete button */}
+            <button onClick={() => handleDeleteWorkout(workout._id)}>Delete</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

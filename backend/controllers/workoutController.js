@@ -3,11 +3,12 @@ const logger = require('../utils/logger');
 
 const workoutController = {
     async createWorkout(req, res) {
-        const { userId, date, name, reps, sets } = req.body;
+        const { userId, date, name, reps, sets, bodyPart} = req.body;
         try {
           // Create a new workout 
-          const newWorkout = new Workout({ userId, date, name, reps, sets });
+          const newWorkout = new Workout({ userId, date, name, reps, sets, bodyPart});
           await newWorkout.save();
+          logger.info(newWorkout);
           const workout = await Workout.findOne(newWorkout);
           res.json({ workoutId: workout._id});
         } catch (err) {

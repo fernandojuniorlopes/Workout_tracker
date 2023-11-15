@@ -15,6 +15,8 @@ const LoggedInNavbar = () => {
       <nav className="navbar">
         <ul className="left-links">
           <li className="left-links li"><Link to="/"><b>Home</b></Link></li>
+          <li className="left-links li"><Link to="/workout-calendar"><b>Workouts</b></Link></li>
+          <li className="left-links li"><Link to="/calendar"><b>Calendar</b></Link></li>
         </ul>
         <ul className="right-links"> 
           <li className="right-links li"><b onClick={handleLogout}>Logout</b></li>

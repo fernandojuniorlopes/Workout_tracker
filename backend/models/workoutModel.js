@@ -5,8 +5,7 @@ const workoutSchema = mongoose.Schema({
     name: String,
     sets: Number,
     reps: Number,
-        // Add other exercise-related fields
-    // Additional fields as needed
+    bodyPart: String
   }, { collection: 'workouts' });
 module.exports = mongoose.model('Workout', workoutSchema);
   

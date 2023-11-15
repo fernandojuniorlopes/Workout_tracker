@@ -7,6 +7,12 @@ import NavigationBar from './components/NavigationBar';
 import LoggedInNavbar from './components/LoggedInNavbar';
 import AddWorkoutForm from './components/AddWorkoutForm';
 import { UserProvider } from './contexts/UserContext';
+import Workouts from './components/Workouts';
+import Modal from 'react-modal';
+
+// Set the app element
+Modal.setAppElement('#root');
+
 const Homepage = () => {
   return (
     <div>
@@ -39,6 +45,7 @@ const App = () => {
           <Route
           path="/workout-calendar"
           element={isAuthenticated() ? <AddWorkoutForm /> : <Navigate to="/" />}/>
+          <Route path="/calendar" element={<Workouts />} />
         </Routes>
       </Router>
     </UserProvider>
