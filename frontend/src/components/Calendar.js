@@ -40,7 +40,9 @@ const Calendar = ({ userWorkouts, handleDeleteExercise, handleFormSubmit }) => {
           <b>
             Exercise: {event.title}, Sets: {event.extendedProps.sets}, Reps: {event.extendedProps.reps}&nbsp;
           </b>
-          <button onClick={() => handleDeleteExercise(event.extendedProps.workoutId)}>Del</button>
+          <div>
+          <button onClick={() => handleDeleteExercise(event.extendedProps.workoutId)}><b>x</b></button>
+          </div>
         </p>
       </div>
     );

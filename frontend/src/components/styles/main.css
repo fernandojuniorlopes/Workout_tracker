@@ -90,6 +90,12 @@
   position: absolute;
   top: 0;
   right: 0;
+  content: 'x';
+  font-weight: 300;
+  font-family: Arial, sans-serif;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 /*Legend Styles*/
